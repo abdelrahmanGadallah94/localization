@@ -7,28 +7,40 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const Text("Dialog "),
+          const Text("bottom sheet "),
           ElevatedButton(
               onPressed: () {
-                Get.snackbar("title", "be careful",
-                    snackPosition: SnackPosition.BOTTOM,
-                    backgroundColor: Colors.red,
-                    titleText: const Text(
-                      "warning",
-                      style: TextStyle(color: Colors.white),
-                      textAlign: TextAlign.center,
-                    ),
-                    animationDuration: const Duration(seconds: 3),
-                    icon: const Icon(Icons.close),
-                    duration: const Duration(seconds: 3),
-                    mainButton: TextButton(
-                        onPressed: () {}, child: const Text("cancel")),
-                    // snackStyle: SnackStyle.GROUNDED
-                    messageText: const Text("Message"),
-                    showProgressIndicator: true,
-                    progressIndicatorBackgroundColor: Colors.yellow);
+                Get.bottomSheet(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextFormField(
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder()),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder()),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          ElevatedButton(
+                              onPressed: () {}, child: const Text("Add"))
+                        ],
+                      ),
+                    ));
               },
               child: const Text("show"))
         ]),

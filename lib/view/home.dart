@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,29 +12,23 @@ class HomePage extends StatelessWidget {
           const Text("Dialog "),
           ElevatedButton(
               onPressed: () {
-                Get.defaultDialog(
-                    backgroundColor: Colors.green,
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 20),
-                    custom: Text("test"),
-                    radius: 50,
-                    middleText: "test",
-                    titleStyle: TextStyle(color: Colors.red),
-                    content: Column(
-                      children: [
-                        TextField(),
-                        TextField(),
-                        ElevatedButton(onPressed: () {}, child: Text("ok"))
-                      ],
-                    )
-                    // cancel: const Icon(Icons.close),
-                    // confirm: Text("confirm"),
-                    // actions: [
-                    //   ElevatedButton(
-                    //       onPressed: () {}, child: const Text("confirm")),
-                    //   ElevatedButton(
-                    //       onPressed: () {}, child: const Text("cancel")),
-                    // ],
-                    );
+                Get.snackbar("title", "be careful",
+                    snackPosition: SnackPosition.BOTTOM,
+                    backgroundColor: Colors.red,
+                    titleText: const Text(
+                      "warning",
+                      style: TextStyle(color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
+                    animationDuration: const Duration(seconds: 3),
+                    icon: const Icon(Icons.close),
+                    duration: const Duration(seconds: 3),
+                    mainButton: TextButton(
+                        onPressed: () {}, child: const Text("cancel")),
+                    // snackStyle: SnackStyle.GROUNDED
+                    messageText: const Text("Message"),
+                    showProgressIndicator: true,
+                    progressIndicatorBackgroundColor: Colors.yellow);
               },
               child: const Text("show"))
         ]),

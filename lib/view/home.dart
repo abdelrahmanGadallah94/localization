@@ -1,50 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:study_getx/view/services/service.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    ChangeColor controller = Get.put(ChangeColor());
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const Text("bottom sheet "),
-          ElevatedButton(
-              onPressed: () {
-                Get.bottomSheet(
-                    backgroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          TextFormField(
-                            decoration: const InputDecoration(
-                                border: OutlineInputBorder()),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          TextFormField(
-                            decoration: const InputDecoration(
-                                border: OutlineInputBorder()),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          ElevatedButton(
-                              onPressed: () {}, child: const Text("Add"))
-                        ],
-                      ),
-                    ));
-              },
-              child: const Text("show"))
-        ]),
-      ),
-    );
+        appBar: AppBar(),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                  onPressed: () {
+                    // if (Get.isDarkMode) {
+                    //   Get.changeTheme(ThemeData.light());
+                    // } else {
+                    //   Get.changeTheme(ThemeData.dark());
+                    // }
+                    controller.setColors();
+                  },
+                  child: const Text("Change Color"))
+            ],
+          ),
+        ));
   }
+}
+
+class MyTheme {
+  static ThemeData lightTheme = ThemeData.light().copyWith(
+      scaffoldBackgroundColor: Colors.cyanAccent,
+      appBarTheme: const AppBarTheme(backgroundColor: Colors.pink));
+  static ThemeData darkTheme = ThemeData.dark().copyWith(
+      scaffoldBackgroundColor: Colors.green,
+      appBarTheme: const AppBarTheme(backgroundColor: Colors.green));
 }

@@ -1,4 +1,7 @@
 import 'package:get/get.dart';
+import 'package:study_getx/view/services/service.dart';
+
+import '../view/home.dart';
 
 class MyController extends GetxController {
   String? name;
@@ -7,6 +10,10 @@ class MyController extends GetxController {
   void onInit() {
     name = Get.arguments["name"];
     age = Get.arguments["age"];
+
+    sharedPreferences.getBool("dark") == true
+        ? MyTheme.darkTheme
+        : MyTheme.lightTheme;
     super.onInit();
   }
 }

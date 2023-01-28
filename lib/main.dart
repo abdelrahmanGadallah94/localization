@@ -20,9 +20,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
-      home: HomePage(),
+    ChangeColor controller = Get.put(ChangeColor());
+    return GetMaterialApp(
+      home: const HomePage(),
       debugShowCheckedModeBanner: false,
+      theme: controller.theme,
     );
   }
 }
